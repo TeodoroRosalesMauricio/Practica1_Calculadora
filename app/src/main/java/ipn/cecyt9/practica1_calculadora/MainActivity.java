@@ -1,5 +1,12 @@
 package ipn.cecyt9.practica1_calculadora;
 
+import static java.lang.Math.cbrt;
+import static java.lang.Math.cos;
+import static java.lang.Math.log;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+import static java.lang.Math.toRadians;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -49,6 +56,21 @@ public class MainActivity extends AppCompatActivity {
         onClickOperacionCapturaNumero1(miView);
     }
 
+    public void onClickRaiz(View miView){
+
+        operador = "root";
+    }
+
+    public void onClickLog(View miView){
+
+        operador = "log";
+    }
+
+    public void onClickExpo(View miView){
+        operador = "^";
+        onClickOperacionCapturaNumero1(miView);
+    }
+
     public void onClickIgual(View miView){
         TextView tv = (TextView) findViewById(R.id.textView);
         num2 = Double.parseDouble(tv.getText().toString());
@@ -68,6 +90,21 @@ public class MainActivity extends AppCompatActivity {
                     else{
                         if(operador.equals("*")){
                             resultado = num1 * num2;
+                        }
+                        else{
+                            if(operador.equals("^")){
+                                resultado = pow(num1,num2);
+                            }
+                            else{
+                                if(operador.equals("root")){
+                                    resultado = Math.sqrt(num2);
+                                }
+                                else{
+                                    if(operador.equals("log")){
+                                        resultado = Math.log(num2);
+                                    }
+                                }
+                            }
                         }
                     }
                 }
